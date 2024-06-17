@@ -47,11 +47,22 @@ async function createCourse(req, res, next) {
 // endpoint get all courses
 async function getCourses(req, res, next) {
     try {
-        const courses = await prisma.course.findMany({
-            include: {
-                lecturer: true
-            }
-        });
+        let { search, lecturer_id } = req.query;
+
+        let filter = {};
+        if (search) {
+            filter.where = {
+                OR: [
+                    { name: { contains: search, mode: 'insensitive' } },
+                    { description: { contains: search, mode: 'insensitive' } }
+                ]
+            };
+        }
+        if (lecturer_id) {
+            filter.where = { ...filter.where, lecturer_id: Number(lecturer_id) };
+        }
+
+        const courses = await prisma.course.findMany(filter);
 
         res.status(200).json({
             status: true,
@@ -75,7 +86,7 @@ async function getCourseById(req, res, next) {
         });
 
         if (!course) {
-            return res.status(404).json({
+            return res.status(400).json({
                 status: false,
                 message: 'Course not found',
                 error: null,

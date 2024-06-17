@@ -7,12 +7,24 @@ const prisma = new PrismaClient(
 
 async function createMaterial(req, res, next) {
     try {
-        const { name, description, course_id } = req.body;
+        const { title, description, course_id } = req.body;
+
+        // Check if the course exists
+        const courseExists = await prisma.course.findFirst({ where: { id: Number(course_id) } });
+        if (!courseExists) {
+            return res.status(400).json({
+                status: false,
+                message: 'Course not found',
+                error: null,
+                data: null
+            });
+        }
 
         // Check if the material is already created
         const materialExists = await prisma.courseMaterial.findFirst({
             where: {
-                name: name
+                title: title,
+                course_id: Number(course_id)
             }
         });
         if (materialExists) {
@@ -26,7 +38,7 @@ async function createMaterial(req, res, next) {
 
         let material = await prisma.courseMaterial.create({
             data: {
-                name,
+                title,
                 description,
                 course_id: Number(course_id)
             }
@@ -46,11 +58,14 @@ async function createMaterial(req, res, next) {
 // endpoint get all materials
 async function getMaterials(req, res, next) {
     try {
-        const materials = await prisma.courseMaterial.findMany({
-            include: {
-                lecturer: true
-            }
-        });
+        let { course_id } = req.query;
+
+        let filter = {};
+        if (course_id) {
+            filter.where = { course_id: Number(course_id) };
+        }
+
+        const materials = await prisma.courseMaterial.findMany(filter);
 
         res.status(200).json({
             status: true,
@@ -74,7 +89,7 @@ async function getMaterialById(req, res, next) {
         });
 
         if (!material) {
-            return res.status(404).json({
+            return res.status(400).json({
                 status: false,
                 message: 'Material not found',
                 error: null,
@@ -97,14 +112,14 @@ async function getMaterialById(req, res, next) {
 async function updateMaterial(req, res, next) {
     try {
         const { id } = req.params;
-        const { name, description } = req.body;
+        const { title, description } = req.body;
 
         let material = await prisma.courseMaterial.update({
             where: {
                 id: Number(id)
             },
             data: {
-                name,
+                title,
                 description
             }
         });

@@ -7,12 +7,23 @@ const prisma = new PrismaClient(
 
 async function createContent(req, res, next) {
     try {
-        const { name, description, course_id } = req.body;
+        const { title, video_url, body, material_id } = req.body;
+
+        // Check if the course material exists
+        const courseMaterialExists = await prisma.courseMaterial.findFirst({ where: { id: Number(material_id) } });
+        if (!courseMaterialExists) {
+            return res.status(400).json({
+                status: false,
+                message: 'Course material not found',
+                error: null,
+                data: null
+            });
+        }
 
         // Check if the content is already created
         const contentExists = await prisma.courseMaterialContent.findFirst({
             where: {
-                name: name
+                title: title
             }
         });
         if (contentExists) {
@@ -26,9 +37,10 @@ async function createContent(req, res, next) {
 
         let content = await prisma.courseMaterialContent.create({
             data: {
-                name,
-                description,
-                course_id: Number(course_id)
+                title,
+                body,
+                video_url,
+                course_material_id: Number(material_id)
             }
         });
 
@@ -46,11 +58,14 @@ async function createContent(req, res, next) {
 // endpoint get all contents
 async function getContents(req, res, next) {
     try {
-        const contents = await prisma.courseMaterialContent.findMany({
-            include: {
-                lecturer: true
-            }
-        });
+        let { material_id } = req.query;
+
+        let filter = {};
+        if (material_id) {
+            filter.where = { course_material_id: Number(material_id) };
+        }
+
+        const contents = await prisma.courseMaterialContent.findMany(filter);
 
         res.status(200).json({
             status: true,
@@ -74,7 +89,7 @@ async function getContentById(req, res, next) {
         });
 
         if (!content) {
-            return res.status(404).json({
+            return res.status(400).json({
                 status: false,
                 message: 'Content not found',
                 error: null,
@@ -97,15 +112,16 @@ async function getContentById(req, res, next) {
 async function updateContent(req, res, next) {
     try {
         const { id } = req.params;
-        const { name, description } = req.body;
+        const { title, video_url, body } = req.body;
 
         let content = await prisma.courseMaterialContent.update({
             where: {
                 id: Number(id)
             },
             data: {
-                name,
-                description
+                title,
+                body,
+                video_url,
             }
         });
 
