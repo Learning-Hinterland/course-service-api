@@ -1,0 +1,23 @@
+{
+  "name": "course-service-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "5.15.0",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "prisma": "^5.15.0"
+  },
+  "prisma": {
+    "schema": "./src/database/schema.prisma"
+  }
+}
