@@ -153,4 +153,147 @@ async function deleteContent(req, res, next) {
     }
 }
 
-module.exports = { createContent, getContents, getContentById, updateContent, deleteContent };
+async function markContentWatched(req, res, next) {
+    try {
+        let { id } = req.params;
+        let { user_id } = req.query;
+
+        let content = await prisma.content.findUnique({ where: { id: Number(id) } });
+        if (!content) {
+            return res.status(400).json({
+                status: false,
+                message: 'Bad Request',
+                error: 'content not found!',
+                data: null
+            });
+        }
+
+        let watchedContent = await prisma.watchedContent.findFirst({ where: { user_id: user_id, content_id: content.id } });
+        if (watchedContent) {
+            return res.status(400).json({
+                status: false,
+                message: 'Bad Request',
+                error: 'content already watched!',
+                data: null
+            });
+        }
+
+        watchedContent = await prisma.watchedContent.create({ data: { user_id: user_id, content_id: content.id } });
+
+        res.status(201).json({
+            status: true,
+            message: 'OK',
+            error: null,
+            data: watchedContent
+        });
+    } catch (err) {
+        next(err);
+    }
+}
+
+async function likeContent(req, res, next) {
+    try {
+        let { id } = req.params;
+        let { user_id } = req.query;
+
+        let content = await prisma.content.findUnique({ where: { id: Number(id) } });
+        if (!content) {
+            return res.status(400).json({
+                status: false,
+                message: 'Bad Request',
+                error: 'content not found!',
+                data: null
+            });
+        }
+
+        let like = await prisma.like.findFirst({ where: { content_id: content.id, user_id: user_id } });
+        if (like) {
+            return res.status(400).json({
+                status: false,
+                message: 'Bad Request',
+                error: 'you already liked this content!',
+                data: null
+            });
+        }
+
+        like = await prisma.like.create({ data: { content_id: content.id, user_id: user_id } });
+
+        res.status(201).json({
+            status: true,
+            message: 'OK',
+            error: null,
+            data: like
+        });
+    } catch (err) {
+        next(err);
+    }
+}
+
+async function unlikeContent(req, res, next) {
+    try {
+        let { id } = req.params;
+        let { user_id } = req.query;
+
+        let content = await prisma.content.findUnique({ where: { id: Number(id) } });
+        if (!content) {
+            return res.status(400).json({
+                status: false,
+                message: 'Bad Request',
+                error: 'content not found!',
+                data: null
+            });
+        }
+
+        let like = await prisma.like.findFirst({ where: { content_id: content.id, user_id: user_id } });
+        if (!like) {
+            return res.status(400).json({
+                status: false,
+                message: 'Bad Request',
+                error: 'you have not liked this content!',
+                data: null
+            });
+        }
+
+        await prisma.like.delete({ where: { id: like.id } });
+
+        res.status(200).json({
+            status: true,
+            message: 'OK',
+            error: null,
+            data: null
+        });
+    } catch (err) {
+        next(err);
+    }
+}
+
+async function commentContent(req, res, next) {
+    try {
+        let { id } = req.params;
+        let { content } = req.body;
+        let { user_id } = req.query;
+
+        let c = await prisma.content.findUnique({ where: { id: Number(id) } });
+        if (!c) {
+            return res.status(400).json({
+                status: false,
+                message: 'Bad Request',
+                error: 'content not found!',
+                data: null
+            });
+        }
+
+        let comment = await prisma.comment.create({ data: { content, user_id: user_id, content_id: c.id } });
+
+        res.status(201).json({
+            status: true,
+            message: 'OK',
+            error: null,
+            data: comment
+        });
+    } catch (err) {
+        next(err);
+    }
+}
+
+module.exports = { createContent, getContents, getContentById, updateContent, deleteContent, markContentWatched, likeContent, unlikeContent, commentContent };
