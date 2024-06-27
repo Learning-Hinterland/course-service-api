@@ -78,13 +78,29 @@ async function getContents(req, res, next) {
 async function getContentById(req, res, next) {
     try {
         const { id } = req.params;
-        const content = await prisma.courseMaterialContent.findUnique({
-            where: {
-                id: Number(id)
-            }
-        });
+        const { user_id } = req.query;
 
-        if (!content) {
+        let contents = await prisma.$queryRawUnsafe(`
+        SELECT
+            course_material_contents.id,
+            course_material_contents.title,
+            course_material_contents.body,
+            course_material_contents.video_url,
+            course_material_contents.material_id,
+            course_enrollments.id AS enrollment_id,
+            ( SELECT COUNT(*) FROM likes WHERE content_id = course_material_contents.id GROUP BY content_id ) likes_count,
+            CASE
+                WHEN likes.id IS NOT NULL THEN true
+                ELSE false
+            END AS is_liked
+        FROM
+            course_material_contents
+            INNER JOIN course_materials ON course_materials.id = course_material_contents.material_id
+            INNER JOIN courses ON courses.id = course_materials.course_id
+            LEFT JOIN course_enrollments ON course_enrollments.course_id = courses.id AND course_enrollments.user_id = ${user_id}
+            LEFT JOIN likes ON likes.content_id = course_material_contents.id AND likes.user_id = ${user_id}
+        WHERE course_material_contents.id = ${id}`);
+        if (!contents.length) {
             return res.status(400).json({
                 status: false,
                 message: 'Content not found',
@@ -93,11 +109,43 @@ async function getContentById(req, res, next) {
             });
         }
 
+        let comments = await prisma.$queryRawUnsafe(`
+            SELECT comments.*
+                FROM comments
+            WHERE comments.content_id = ${Number(id)}
+            ORDER BY comments.date;`);
+        let commentsMap = {};
+        comments.forEach(comment => {
+            if (!commentsMap[comment.content_id]) {
+                commentsMap[comment.content_id] = [];
+            }
+            commentsMap[comment.content_id].push({
+                id: comment.id,
+                user: {
+                    id: comment.user_id
+                },
+                content: comment.content,
+                date: comment.date
+            });
+        });
+
+        contents = contents.map(content => {
+            return {
+                id: content.id,
+                title: content.title,
+                body: content.body,
+                video_url: content.video_url,
+                likes_count: Number(content.likes_count),
+                likes: content.is_liked,
+                comments: commentsMap[content.id] || []
+            };
+        });
+
         res.status(200).json({
             status: true,
             message: 'Content retrieved successfully',
             error: null,
-            data: content
+            data: contents[0]
         });
     } catch (error) {
         next(error);

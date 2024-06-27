@@ -78,13 +78,55 @@ async function getMaterials(req, res, next) {
 async function getMaterialById(req, res, next) {
     try {
         const { id } = req.params;
-        const material = await prisma.courseMaterial.findUnique({
-            where: {
-                id: Number(id)
-            }
-        });
+        const { user_id } = req.query;
 
-        if (!material) {
+        let materials = await prisma.$queryRawUnsafe(`
+        SELECT
+            course_materials.id,
+            course_materials.title,
+            course_materials.description,
+            course_materials.course_id,
+
+            course_material_contents.id AS content_id,
+            course_material_contents.title AS content_title,
+            course_material_contents.body AS content_body,
+            course_material_contents.video_url AS content_video_url,
+            course_material_contents.material_id AS content_material_id,
+
+            course_enrollments.id AS enrollment_id,
+
+            (
+                SELECT COUNT(*)
+                FROM
+                    course_material_contents c
+                    INNER JOIN course_materials l ON l.id = c.material_id
+                WHERE c.material_id = course_materials.id
+                GROUP BY c.material_id
+            ) AS material_total_contents,
+            (
+                SELECT COUNT(*)
+                FROM
+                    course_material_contents c
+                    INNER JOIN watched_contents wc ON wc.content_id = c.id
+                    INNER JOIN course_materials l ON l.id = c.material_id
+                WHERE c.material_id = course_materials.id AND wc.user_id = ${user_id}
+                GROUP BY c.material_id
+            ) AS material_watched_contents,
+            (
+                SELECT COUNT(*) FROM likes WHERE content_id = course_material_contents.id GROUP BY content_id
+            ) likes_count,
+            CASE
+                WHEN likes.id IS NOT NULL THEN true
+                ELSE false
+            END AS is_liked
+        FROM
+            course_materials
+            INNER JOIN courses ON courses.id = course_materials.course_id
+            LEFT JOIN course_material_contents ON course_material_contents.material_id = course_materials.id
+            LEFT JOIN course_enrollments ON course_enrollments.course_id = courses.id AND course_enrollments.user_id = ${user_id}
+            LEFT JOIN likes ON likes.content_id = course_material_contents.id AND likes.user_id = ${user_id}
+        WHERE course_materials.id = ${id};`);
+        if (!materials.length) {
             return res.status(400).json({
                 status: false,
                 message: 'Material not found',
@@ -93,11 +135,72 @@ async function getMaterialById(req, res, next) {
             });
         }
 
+        let comments = await prisma.$queryRawUnsafe(`
+            SELECT comments.*
+                FROM comments
+                INNER JOIN course_material_contents ON course_material_contents.id = comments.content_id
+            WHERE course_material_contents.material_id = ${Number(id)}
+            ORDER BY comments.date;`);
+        let commentsMap = {};
+        comments.forEach(comment => {
+            if (!commentsMap[comment.content_id]) {
+                commentsMap[comment.content_id] = [];
+            }
+            commentsMap[comment.content_id].push({
+                id: comment.id,
+                user: {
+                    id: comment.user_id
+                },
+                content: comment.content,
+                date: comment.date
+            });
+        });
+
+        const materialsMap = new Map();
+        materials.forEach(item => {
+            // Find or create the course
+            if (!materialsMap.has(item.id)) {
+                let l = {
+                    id: item.id,
+                    title: item.title,
+                    description: item.description,
+                    course_id: item.course_id,
+                    contents: []
+                };
+                if (item.enrollment_id) {
+                    l.progress = {
+                        total_contents: Number(item.material_total_contents),
+                        watched_contents: Number(item.material_watched_contents),
+                        percentage: parseInt(Number(item.material_watched_contents) / Number(item.material_total_contents) * 100)
+                    };
+                }
+                materialsMap.set(item.id, l);
+            }
+
+            if (!item.content_id) {
+                return;
+            }
+
+            // Add content to the material
+            const material = materialsMap.get(item.id);
+            material.contents.push({
+                id: item.content_id,
+                title: item.content_title,
+                body: item.content_body,
+                video_url: item.content_video_url,
+                likes_count: Number(item.likes_count),
+                likes: item.is_liked,
+                comments: commentsMap[item.content_id] || []
+            });
+        });
+
+        const response = Array.from(materialsMap.values());
+
         res.status(200).json({
             status: true,
             message: 'Material retrieved successfully',
             error: null,
-            data: material
+            data: response[0]
         });
     } catch (error) {
         next(error);

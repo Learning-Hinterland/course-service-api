@@ -50,7 +50,6 @@ async function getCourses(req, res, next) {
         let query = `
         SELECT
             courses.*,
-            -- users.name AS lecturer_name,
             course_enrollments.id AS enrollment_id,
             (
                 SELECT COUNT(*)
@@ -72,7 +71,6 @@ async function getCourses(req, res, next) {
         FROM
             courses
             LEFT JOIN course_enrollments ON course_enrollments.course_id = courses.id AND course_enrollments.user_id = ${user_id}
-            -- INNER JOIN users ON users.id = courses.lecturer_id
         WHERE 1=1`;
 
         if (search) {
@@ -171,7 +169,7 @@ async function getCourseById(req, res, next) {
                     INNER JOIN course_materials l ON l.id = c.material_id
                 WHERE c.material_id = course_materials.id
                 GROUP BY c.material_id
-            ) AS material,
+            ) AS material_total_contents,
             (
                 SELECT COUNT(*)
                 FROM
@@ -180,7 +178,7 @@ async function getCourseById(req, res, next) {
                     INNER JOIN course_materials l ON l.id = c.material_id
                 WHERE c.material_id = course_materials.id AND wc.user_id = ${user_id}
                 GROUP BY c.material_id
-            ) AS material,
+            ) AS material_watched_contents,
             (
                 SELECT COUNT(*) FROM likes WHERE content_id = course_material_contents.id GROUP BY content_id
             ) likes_count,
@@ -196,7 +194,6 @@ async function getCourseById(req, res, next) {
             LEFT JOIN likes ON likes.content_id = course_material_contents.id AND likes.user_id = ${user_id}
         WHERE
             courses.id = ${id};`);
-
         if (!course.length) {
             return res.status(400).json({
                 status: false,
@@ -213,7 +210,6 @@ async function getCourseById(req, res, next) {
             INNER JOIN course_materials ON course_materials.id = course_material_contents.material_id
         WHERE course_materials.course_id = ${Number(id)}
         ORDER BY comments.date;`);
-
         let commentsMap = {};
         comments.forEach(comment => {
             if (!commentsMap[comment.content_id]) {
@@ -241,7 +237,6 @@ async function getCourseById(req, res, next) {
                     cover_url: item.cover_url,
                     lecturer: {
                         id: item.lecturer_id,
-                        // name: item.lecturer_name
                     },
                     materials: [],
                     is_enrolled: false
