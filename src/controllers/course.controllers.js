@@ -1,6 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient({ log: ['query'] }
-);
+const prisma = new PrismaClient({ log: ['query'] });
 
 async function createCourse(req, res, next) {
     try {

@@ -80,7 +80,6 @@ model Comment {
 model CourseMaterialAssignment {
   id          Int       @id @default(autoincrement())
   material_id Int
-  user_id     Int
   content     String
   deadline    DateTime?
 
