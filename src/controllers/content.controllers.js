@@ -168,7 +168,7 @@ async function markContentWatched(req, res, next) {
             });
         }
 
-        let watchedContent = await prisma.watchedContent.findFirst({ where: { user_id: user_id, content_id: content.id } });
+        let watchedContent = await prisma.watchedContent.findFirst({ where: { user_id: Number(user_id), content_id: content.id } });
         if (watchedContent) {
             return res.status(400).json({
                 status: false,
@@ -178,7 +178,7 @@ async function markContentWatched(req, res, next) {
             });
         }
 
-        watchedContent = await prisma.watchedContent.create({ data: { user_id: user_id, content_id: content.id } });
+        watchedContent = await prisma.watchedContent.create({ data: { user_id: Number(user_id), content_id: content.id } });
 
         res.status(201).json({
             status: true,
@@ -206,7 +206,7 @@ async function likeContent(req, res, next) {
             });
         }
 
-        let like = await prisma.like.findFirst({ where: { content_id: content.id, user_id: user_id } });
+        let like = await prisma.like.findFirst({ where: { content_id: content.id, user_id: Number(user_id) } });
         if (like) {
             return res.status(400).json({
                 status: false,
@@ -216,7 +216,7 @@ async function likeContent(req, res, next) {
             });
         }
 
-        like = await prisma.like.create({ data: { content_id: content.id, user_id: user_id } });
+        like = await prisma.like.create({ data: { content_id: content.id, user_id: Number(user_id) } });
 
         res.status(201).json({
             status: true,
@@ -244,7 +244,7 @@ async function unlikeContent(req, res, next) {
             });
         }
 
-        let like = await prisma.like.findFirst({ where: { content_id: content.id, user_id: user_id } });
+        let like = await prisma.like.findFirst({ where: { content_id: content.id, user_id: Number(user_id) } });
         if (!like) {
             return res.status(400).json({
                 status: false,
@@ -283,7 +283,7 @@ async function commentContent(req, res, next) {
             });
         }
 
-        let comment = await prisma.comment.create({ data: { content, user_id: user_id, content_id: c.id } });
+        let comment = await prisma.comment.create({ data: { content, user_id: Number(user_id), content_id: c.id } });
 
         res.status(201).json({
             status: true,

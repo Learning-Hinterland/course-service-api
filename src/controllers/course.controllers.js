@@ -82,7 +82,7 @@ async function getCourses(req, res, next) {
             query += ` AND courses.lecturer_id = ${parseInt(lecturer_id, 10)}`;
         }
         if (is_enrolled === 'true') {
-            query += ` AND enrollments.id IS NOT NULL`;
+            query += ` AND course_enrollments.id IS NOT NULL`;
         }
 
         let courses = await prisma.$queryRawUnsafe(query);
