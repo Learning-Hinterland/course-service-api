@@ -36,7 +36,7 @@ async function createContent(req, res, next) {
                 title,
                 body,
                 video_url,
-                course_material_id: Number(material_id)
+                material_id: Number(material_id)
             }
         });
 
@@ -58,7 +58,7 @@ async function getContents(req, res, next) {
 
         let filter = {};
         if (material_id) {
-            filter.where = { course_material_id: Number(material_id) };
+            filter.where = { material_id: Number(material_id) };
         }
 
         const contents = await prisma.courseMaterialContent.findMany(filter);
@@ -158,7 +158,7 @@ async function markContentWatched(req, res, next) {
         let { id } = req.params;
         let { user_id } = req.query;
 
-        let content = await prisma.content.findUnique({ where: { id: Number(id) } });
+        let content = await prisma.courseMaterialContent.findUnique({ where: { id: Number(id) } });
         if (!content) {
             return res.status(400).json({
                 status: false,
@@ -196,7 +196,7 @@ async function likeContent(req, res, next) {
         let { id } = req.params;
         let { user_id } = req.query;
 
-        let content = await prisma.content.findUnique({ where: { id: Number(id) } });
+        let content = await prisma.courseMaterialContent.findUnique({ where: { id: Number(id) } });
         if (!content) {
             return res.status(400).json({
                 status: false,
@@ -234,7 +234,7 @@ async function unlikeContent(req, res, next) {
         let { id } = req.params;
         let { user_id } = req.query;
 
-        let content = await prisma.content.findUnique({ where: { id: Number(id) } });
+        let content = await prisma.courseMaterialContent.findUnique({ where: { id: Number(id) } });
         if (!content) {
             return res.status(400).json({
                 status: false,
@@ -273,7 +273,7 @@ async function commentContent(req, res, next) {
         let { content } = req.body;
         let { user_id } = req.query;
 
-        let c = await prisma.content.findUnique({ where: { id: Number(id) } });
+        let c = await prisma.courseMaterialContent.findUnique({ where: { id: Number(id) } });
         if (!c) {
             return res.status(400).json({
                 status: false,

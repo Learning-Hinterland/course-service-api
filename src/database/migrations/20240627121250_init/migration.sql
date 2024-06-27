@@ -22,9 +22,10 @@ CREATE TABLE "course_materials" (
 -- CreateTable
 CREATE TABLE "course_material_contents" (
     "id" SERIAL NOT NULL,
-    "video_url" TEXT NOT NULL,
-    "content" TEXT NOT NULL,
-    "course_material_id" INTEGER NOT NULL,
+    "title" TEXT NOT NULL,
+    "body" TEXT,
+    "video_url" TEXT,
+    "material_id" INTEGER NOT NULL,
 
     CONSTRAINT "course_material_contents_pkey" PRIMARY KEY ("id")
 );
@@ -36,4 +37,34 @@ CREATE TABLE "course_enrollments" (
     "user_id" INTEGER NOT NULL,
 
     CONSTRAINT "course_enrollments_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "watched_contents" (
+    "id" SERIAL NOT NULL,
+    "content_id" INTEGER NOT NULL,
+    "user_id" INTEGER NOT NULL,
+
+    CONSTRAINT "watched_contents_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "likes" (
+    "id" SERIAL NOT NULL,
+    "content_id" INTEGER NOT NULL,
+    "user_id" INTEGER NOT NULL,
+    "date" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "likes_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "comments" (
+    "id" SERIAL NOT NULL,
+    "content_id" INTEGER NOT NULL,
+    "user_id" INTEGER NOT NULL,
+    "content" TEXT NOT NULL,
+    "date" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "comments_pkey" PRIMARY KEY ("id")
 );

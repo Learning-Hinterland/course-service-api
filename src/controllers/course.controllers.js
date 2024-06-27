@@ -56,7 +56,7 @@ async function getCourses(req, res, next) {
                 SELECT COUNT(*)
                 FROM
                     course_material_contents c
-                    INNER JOIN course_materials l ON l.id = c.course_material_id
+                    INNER JOIN course_materials l ON l.id = c.material_id
                 WHERE l.course_id = courses.id
                 GROUP BY l.course_id
             ) AS total_contents,
@@ -65,7 +65,7 @@ async function getCourses(req, res, next) {
                 FROM
                     course_material_contents c
                     INNER JOIN watched_contents wc ON wc.content_id = c.id
-                    INNER JOIN course_materials l ON l.id = c.course_material_id
+                    INNER JOIN course_materials l ON l.id = c.material_id
                 WHERE l.course_id = courses.id AND wc.user_id = ${user_id}
                 GROUP BY l.course_id
             ) AS watched_contents
@@ -142,7 +142,7 @@ async function getCourseById(req, res, next) {
             course_material_contents.title AS content_title,
             course_material_contents.body AS content_body,
             course_material_contents.video_url AS content_video_url,
-            course_material_contents.course_material_id AS content_material_id,
+            course_material_contents.material_id AS content_material_id,
 
             courses.lecturer_id,
             course_enrollments.id AS enrollment_id,
@@ -151,7 +151,7 @@ async function getCourseById(req, res, next) {
                 SELECT COUNT(*)
                 FROM
                     course_material_contents c
-                    INNER JOIN course_materials l ON l.id = c.course_material_id
+                    INNER JOIN course_materials l ON l.id = c.material_id
                 WHERE l.course_id = courses.id
                 GROUP BY l.course_id
             ) AS course_total_contents,
@@ -160,7 +160,7 @@ async function getCourseById(req, res, next) {
                 FROM
                     course_material_contents c
                     INNER JOIN watched_contents wc ON wc.content_id = c.id
-                    INNER JOIN course_materials l ON l.id = c.course_material_id
+                    INNER JOIN course_materials l ON l.id = c.material_id
                 WHERE l.course_id = courses.id AND wc.user_id = ${user_id}
                 GROUP BY l.course_id
             ) AS course_watched_contents,
@@ -168,18 +168,18 @@ async function getCourseById(req, res, next) {
                 SELECT COUNT(*)
                 FROM
                     course_material_contents c
-                    INNER JOIN course_materials l ON l.id = c.course_material_id
-                WHERE c.course_material_id = course_materials.id
-                GROUP BY c.course_material_id
+                    INNER JOIN course_materials l ON l.id = c.material_id
+                WHERE c.material_id = course_materials.id
+                GROUP BY c.material_id
             ) AS material,
             (
                 SELECT COUNT(*)
                 FROM
                     course_material_contents c
                     INNER JOIN watched_contents wc ON wc.content_id = c.id
-                    INNER JOIN course_materials l ON l.id = c.course_material_id
-                WHERE c.course_material_id = course_materials.id AND wc.user_id = ${user_id}
-                GROUP BY c.course_material_id
+                    INNER JOIN course_materials l ON l.id = c.material_id
+                WHERE c.material_id = course_materials.id AND wc.user_id = ${user_id}
+                GROUP BY c.material_id
             ) AS material,
             (
                 SELECT COUNT(*) FROM likes WHERE content_id = course_material_contents.id GROUP BY content_id
@@ -191,7 +191,7 @@ async function getCourseById(req, res, next) {
         FROM
             courses
             LEFT JOIN course_materials ON course_materials.course_id = courses.id
-            LEFT JOIN course_material_contents ON course_material_contents.course_material_id = course_materials.id
+            LEFT JOIN course_material_contents ON course_material_contents.material_id = course_materials.id
             LEFT JOIN course_enrollments ON course_enrollments.course_id = courses.id AND course_enrollments.user_id = ${user_id}
             LEFT JOIN likes ON likes.content_id = course_material_contents.id AND likes.user_id = ${user_id}
         WHERE
@@ -210,7 +210,7 @@ async function getCourseById(req, res, next) {
         SELECT comments.*
             FROM comments
             INNER JOIN course_material_contents ON course_material_contents.id = comments.content_id
-            INNER JOIN course_materials ON course_materials.id = course_material_contents.course_material_id
+            INNER JOIN course_materials ON course_materials.id = course_material_contents.material_id
         WHERE course_materials.course_id = ${Number(id)}
         ORDER BY comments.date;`);
 
