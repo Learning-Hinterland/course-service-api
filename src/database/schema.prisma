@@ -76,3 +76,24 @@ model Comment {
 
   @@map("comments")
 }
+
+model CourseMaterialAssignment {
+  id          Int       @id @default(autoincrement())
+  material_id Int
+  user_id     Int
+  content     String
+  deadline    DateTime?
+
+  @@map("course_material_assignments")
+}
+
+model CourseMaterialSubmission {
+  id            Int       @id @default(autoincrement())
+  assignment_id Int
+  user_id       Int
+  url           String
+  description   String
+  date          DateTime? @default(now())
+
+  @@map("course_material_submissions")
+}
