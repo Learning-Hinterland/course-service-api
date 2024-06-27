@@ -1,8 +1,5 @@
 const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient(
-    {
-        log: ['query'],
-    }
+const prisma = new PrismaClient({ log: ['query'] }
 );
 
 async function createCourse(req, res, next) {
@@ -154,4 +151,82 @@ async function deleteCourse(req, res, next) {
     }
 }
 
-module.exports = { createCourse, getCourses, getCourseById, updateCourse, deleteCourse };
+async function enrollCourse(req, res, next) {
+    try {
+        let { id } = req.params;
+        let { user_id } = req.query;
+
+        console.log("id", id);
+        console.log("req.query", req.query);
+        console.log("user_id", user_id);
+
+        let course = await prisma.course.findUnique({ where: { id: Number(id) } });
+        if (!course) {
+            return res.status(400).json({
+                status: false,
+                message: 'Bad Request',
+                error: 'course not found!',
+                data: null
+            });
+        }
+
+        let exist = await prisma.courseEnrollment.findFirst({ where: { course_id: course.id, user_id: Number(user_id) } });
+        if (exist) {
+            return res.status(400).json({
+                status: false,
+                message: 'Bad Request',
+                error: 'already enrolled!',
+                data: null
+            });
+        }
+
+        let enrollment = await prisma.courseEnrollment.create({
+            data: {
+                course_id: course.id,
+                user_id: Number(user_id)
+            }
+        });
+
+        return res.status(201).json({
+            status: true,
+            message: 'OK',
+            error: null,
+            data: enrollment
+        });
+    } catch (err) {
+        next(err);
+    }
+}
+
+async function unenrollCourse(req, res, next) {
+    try {
+        let { id } = req.params;
+        let { user_id } = req.query;
+
+        console.log("user_id", user_id);
+        console.log("req.query", req.query);
+
+        let enrollment = await prisma.courseEnrollment.findFirst({ where: { course_id: Number(id), user_id: Number(user_id) } });
+        if (!enrollment) {
+            return res.status(400).json({
+                status: false,
+                message: 'Bad Request',
+                error: 'not enrolled!',
+                data: null
+            });
+        }
+
+        await prisma.courseEnrollment.delete({ where: { id: enrollment.id } });
+
+        return res.status(200).json({
+            status: true,
+            message: 'OK',
+            error: null,
+            data: null
+        });
+    } catch (err) {
+        next(err);
+    }
+}
+
+module.exports = { createCourse, getCourses, getCourseById, updateCourse, deleteCourse, enrollCourse, unenrollCourse };

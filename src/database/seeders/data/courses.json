@@ -1,0 +1,842 @@
+[
+    {
+        "name": "Introduction to Informatics",
+        "description": "An overview of the field of informatics, including its history, key concepts, and applications.",
+        "cover_url": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/c57e6f17900865.562c0b39d6f24.png",
+        "materials": [
+            {
+                "title": "History of Informatics",
+                "description": "An in-depth look at the origins and evolution of informatics.",
+                "contents": [
+                    {
+                        "title": "Early Development",
+                        "body": "The beginnings of informatics can be traced back to the early 20th century.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Major Milestones",
+                        "body": "Key developments that shaped the field of informatics.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Modern Era",
+                        "body": "The current state of informatics and future trends.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Key Concepts in Informatics",
+                "description": "An overview of the fundamental concepts in informatics.",
+                "contents": [
+                    {
+                        "title": "Data Structures",
+                        "body": "Introduction to various data structures used in informatics.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Algorithms",
+                        "body": "Basic algorithms and their applications.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Database Management",
+                        "body": "Fundamentals of database management systems.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Applications of Informatics",
+                "description": "Exploring the various applications of informatics in different fields.",
+                "contents": [
+                    {
+                        "title": "Healthcare",
+                        "body": "How informatics is used in the healthcare industry.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Finance",
+                        "body": "The role of informatics in financial services.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Education",
+                        "body": "Informatics applications in educational settings.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Programming Fundamentals",
+        "description": "An introduction to the basics of programming, including syntax, logic, and problem-solving.",
+        "cover_url": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/c57e6f17900865.562c0b39d6f24.png",
+        "materials": [
+            {
+                "title": "Basic Syntax",
+                "description": "Learning the basic syntax of programming languages.",
+                "contents": [
+                    {
+                        "title": "Variables and Data Types",
+                        "body": "Understanding variables and different data types.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Control Structures",
+                        "body": "Introduction to control structures such as loops and conditionals.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Functions and Procedures",
+                        "body": "Writing and using functions and procedures.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Problem-Solving",
+                "description": "Techniques for solving programming problems effectively.",
+                "contents": [
+                    {
+                        "title": "Algorithm Design",
+                        "body": "Designing algorithms to solve problems.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Debugging Techniques",
+                        "body": "Effective debugging techniques to identify and fix errors.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Optimization",
+                        "body": "Optimizing code for better performance.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Advanced Topics",
+                "description": "Exploring advanced topics in programming.",
+                "contents": [
+                    {
+                        "title": "Object-Oriented Programming",
+                        "body": "Introduction to object-oriented programming concepts.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Functional Programming",
+                        "body": "Understanding the principles of functional programming.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Concurrent Programming",
+                        "body": "Basics of concurrent programming and multithreading.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Data Structures and Algorithms",
+        "description": "A comprehensive study of data structures and algorithms, including their implementation and analysis.",
+        "cover_url": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/c57e6f17900865.562c0b39d6f24.png",
+        "materials": [
+            {
+                "title": "Basic Data Structures",
+                "description": "Introduction to basic data structures such as arrays, linked lists, and stacks.",
+                "contents": [
+                    {
+                        "title": "Arrays",
+                        "body": "Understanding arrays and their operations.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Linked Lists",
+                        "body": "Introduction to linked lists and their implementation.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Stacks and Queues",
+                        "body": "Using stacks and queues in programming.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Advanced Data Structures",
+                "description": "Exploring advanced data structures like trees, graphs, and hash tables.",
+                "contents": [
+                    {
+                        "title": "Trees",
+                        "body": "Introduction to tree data structures.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Graphs",
+                        "body": "Understanding graph data structures and algorithms.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Hash Tables",
+                        "body": "Using hash tables for efficient data retrieval.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Algorithm Analysis",
+                "description": "Techniques for analyzing the performance of algorithms.",
+                "contents": [
+                    {
+                        "title": "Big O Notation",
+                        "body": "Understanding Big O notation and its importance.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Time Complexity",
+                        "body": "Analyzing the time complexity of algorithms.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Space Complexity",
+                        "body": "Analyzing the space complexity of algorithms.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Database Management Systems",
+        "description": "An introduction to database management systems, including design, implementation, and optimization.",
+        "cover_url": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/c57e6f17900865.562c0b39d6f24.png",
+        "materials": [
+            {
+                "title": "Database Design",
+                "description": "Principles of database design and normalization.",
+                "contents": [
+                    {
+                        "title": "Entity-Relationship Model",
+                        "body": "Understanding the entity-relationship model for database design.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Normalization",
+                        "body": "Techniques for normalizing databases.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Database Schemas",
+                        "body": "Designing database schemas for efficient data management.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "SQL and Query Optimization",
+                "description": "Learning SQL and techniques for optimizing database queries.",
+                "contents": [
+                    {
+                        "title": "Basic SQL",
+                        "body": "Introduction to SQL and its basic commands.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Advanced SQL",
+                        "body": "Advanced SQL techniques and commands.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Query Optimization",
+                        "body": "Techniques for optimizing SQL queries.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "NoSQL Databases",
+                "description": "Introduction to NoSQL databases and their use cases.",
+                "contents": [
+                    {
+                        "title": "Introduction to NoSQL",
+                        "body": "Understanding the basics of NoSQL databases.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Document Databases",
+                        "body": "Using document databases for flexible data management.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Key-Value Stores",
+                        "body": "Introduction to key-value stores and their applications.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Operating Systems",
+        "description": "A detailed study of operating systems, including their design, implementation, and management.",
+        "cover_url": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/c57e6f17900865.562c0b39d6f24.png",
+        "materials": [
+            {
+                "title": "Introduction to Operating Systems",
+                "description": "Basic concepts and functions of operating systems.",
+                "contents": [
+                    {
+                        "title": "System Components",
+                        "body": "Understanding the core components of operating systems.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Processes and Threads",
+                        "body": "Introduction to processes and threads in operating systems.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Memory Management",
+                        "body": "Techniques for memory management in operating systems.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "File Systems",
+                "description": "Exploring file systems and their management.",
+                "contents": [
+                    {
+                        "title": "File System Basics",
+                        "body": "Understanding the basics of file systems.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "File Allocation",
+                        "body": "Techniques for file allocation and management.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "File System Security",
+                        "body": "Ensuring security in file systems.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Advanced Topics in Operating Systems",
+                "description": "Advanced concepts and techniques in operating systems.",
+                "contents": [
+                    {
+                        "title": "Virtualization",
+                        "body": "Introduction to virtualization and its applications.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Concurrency",
+                        "body": "Handling concurrency in operating systems.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Distributed Systems",
+                        "body": "Exploring distributed systems and their management.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Computer Networks",
+        "description": "An in-depth study of computer networks, including their design, implementation, and management.",
+        "cover_url": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/c57e6f17900865.562c0b39d6f24.png",
+        "materials": [
+            {
+                "title": "Introduction to Networks",
+                "description": "Basic concepts and components of computer networks.",
+                "contents": [
+                    {
+                        "title": "Network Models",
+                        "body": "Understanding different network models.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Network Topologies",
+                        "body": "Introduction to various network topologies.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Network Protocols",
+                        "body": "Basics of network protocols and their functions.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Network Security",
+                "description": "Exploring network security principles and practices.",
+                "contents": [
+                    {
+                        "title": "Security Threats",
+                        "body": "Understanding common network security threats.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Encryption",
+                        "body": "Introduction to encryption techniques.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Firewalls and VPNs",
+                        "body": "Using firewalls and VPNs for network security.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Advanced Networking",
+                "description": "Advanced topics in computer networking.",
+                "contents": [
+                    {
+                        "title": "Wireless Networks",
+                        "body": "Understanding wireless networking technologies.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Network Management",
+                        "body": "Techniques for effective network management.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Cloud Computing",
+                        "body": "Introduction to cloud computing and its applications.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Software Engineering",
+        "description": "A comprehensive study of software engineering principles, methodologies, and practices.",
+        "cover_url": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/c57e6f17900865.562c0b39d6f24.png",
+        "materials": [
+            {
+                "title": "Software Development Life Cycle",
+                "description": "Understanding the software development life cycle.",
+                "contents": [
+                    {
+                        "title": "Requirements Analysis",
+                        "body": "Techniques for analyzing software requirements.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Design",
+                        "body": "Principles of software design.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Implementation",
+                        "body": "Best practices for software implementation.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Software Testing",
+                "description": "Exploring software testing methodologies and techniques.",
+                "contents": [
+                    {
+                        "title": "Unit Testing",
+                        "body": "Understanding unit testing and its importance.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Integration Testing",
+                        "body": "Techniques for integration testing.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "System Testing",
+                        "body": "Introduction to system testing.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Agile Methodologies",
+                "description": "Introduction to agile methodologies in software development.",
+                "contents": [
+                    {
+                        "title": "Scrum",
+                        "body": "Understanding the Scrum framework.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Kanban",
+                        "body": "Introduction to Kanban methodology.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Lean",
+                        "body": "Applying lean principles to software development.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Human-Computer Interaction",
+        "description": "Studying the interaction between humans and computers, including interface design and usability.",
+        "cover_url": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/c57e6f17900865.562c0b39d6f24.png",
+        "materials": [
+            {
+                "title": "Introduction to HCI",
+                "description": "Basic concepts of human-computer interaction.",
+                "contents": [
+                    {
+                        "title": "HCI Principles",
+                        "body": "Understanding the principles of human-computer interaction.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "User-Centered Design",
+                        "body": "Introduction to user-centered design.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Usability Testing",
+                        "body": "Techniques for usability testing.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Interface Design",
+                "description": "Exploring principles and techniques of interface design.",
+                "contents": [
+                    {
+                        "title": "Visual Design",
+                        "body": "Principles of visual design for interfaces.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Interaction Design",
+                        "body": "Understanding interaction design.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Prototyping",
+                        "body": "Techniques for prototyping user interfaces.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Advanced HCI Topics",
+                "description": "Advanced topics in human-computer interaction.",
+                "contents": [
+                    {
+                        "title": "Augmented Reality",
+                        "body": "Introduction to augmented reality in HCI.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Virtual Reality",
+                        "body": "Understanding virtual reality and its applications.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Accessible Design",
+                        "body": "Principles of designing for accessibility.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Artificial Intelligence",
+        "description": "An introduction to artificial intelligence, including machine learning, neural networks, and AI applications.",
+        "cover_url": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/c57e6f17900865.562c0b39d6f24.png",
+        "materials": [
+            {
+                "title": "Introduction to AI",
+                "description": "Basic concepts and history of artificial intelligence.",
+                "contents": [
+                    {
+                        "title": "AI Concepts",
+                        "body": "Understanding the fundamental concepts of AI.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "History of AI",
+                        "body": "A brief history of artificial intelligence.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "AI Applications",
+                        "body": "Exploring various applications of AI.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Machine Learning",
+                "description": "Introduction to machine learning and its techniques.",
+                "contents": [
+                    {
+                        "title": "Supervised Learning",
+                        "body": "Understanding supervised learning algorithms.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Unsupervised Learning",
+                        "body": "Introduction to unsupervised learning.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Reinforcement Learning",
+                        "body": "Basics of reinforcement learning.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Neural Networks",
+                "description": "Exploring neural networks and deep learning.",
+                "contents": [
+                    {
+                        "title": "Introduction to Neural Networks",
+                        "body": "Understanding the basics of neural networks.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Deep Learning",
+                        "body": "Introduction to deep learning techniques.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Convolutional Neural Networks",
+                        "body": "Basics of convolutional neural networks.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Cybersecurity",
+        "description": "A comprehensive study of cybersecurity principles, practices, and technologies.",
+        "cover_url": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/c57e6f17900865.562c0b39d6f24.png",
+        "materials": [
+            {
+                "title": "Introduction to Cybersecurity",
+                "description": "Basic concepts and importance of cybersecurity.",
+                "contents": [
+                    {
+                        "title": "Cybersecurity Principles",
+                        "body": "Understanding the fundamental principles of cybersecurity.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Threats and Vulnerabilities",
+                        "body": "Identifying common cybersecurity threats and vulnerabilities.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Security Policies",
+                        "body": "Developing and implementing security policies.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Cryptography",
+                "description": "Exploring cryptographic techniques and their applications.",
+                "contents": [
+                    {
+                        "title": "Basic Cryptography",
+                        "body": "Introduction to basic cryptographic concepts.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Encryption Algorithms",
+                        "body": "Understanding various encryption algorithms.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Public Key Infrastructure",
+                        "body": "Introduction to public key infrastructure (PKI).",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Network Security",
+                "description": "Techniques for ensuring network security.",
+                "contents": [
+                    {
+                        "title": "Firewalls",
+                        "body": "Understanding the role of firewalls in network security.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Intrusion Detection",
+                        "body": "Techniques for intrusion detection and prevention.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Virtual Private Networks",
+                        "body": "Using virtual private networks (VPNs) for secure communication.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Cloud Computing",
+        "description": "An introduction to cloud computing, including its architecture, services, and applications.",
+        "cover_url": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/c57e6f17900865.562c0b39d6f24.png",
+        "materials": [
+            {
+                "title": "Introduction to Cloud Computing",
+                "description": "Basic concepts and benefits of cloud computing.",
+                "contents": [
+                    {
+                        "title": "Cloud Architecture",
+                        "body": "Understanding the architecture of cloud computing.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Cloud Services",
+                        "body": "Exploring different types of cloud services.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Cloud Deployment Models",
+                        "body": "Understanding various cloud deployment models.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Cloud Platforms",
+                "description": "Introduction to major cloud platforms and their features.",
+                "contents": [
+                    {
+                        "title": "AWS",
+                        "body": "Understanding Amazon Web Services (AWS).",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Microsoft Azure",
+                        "body": "Introduction to Microsoft Azure.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Google Cloud Platform",
+                        "body": "Exploring Google Cloud Platform (GCP).",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Cloud Security",
+                "description": "Ensuring security in cloud computing environments.",
+                "contents": [
+                    {
+                        "title": "Security Best Practices",
+                        "body": "Best practices for securing cloud environments.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Data Protection",
+                        "body": "Techniques for data protection in the cloud.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Compliance",
+                        "body": "Ensuring compliance in cloud computing.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Web Development",
+        "description": "A comprehensive study of web development, including front-end, back-end, and full-stack development.",
+        "cover_url": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/c57e6f17900865.562c0b39d6f24.png",
+        "materials": [
+            {
+                "title": "Front-End Development",
+                "description": "Introduction to front-end development technologies and techniques.",
+                "contents": [
+                    {
+                        "title": "HTML and CSS",
+                        "body": "Understanding the basics of HTML and CSS.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "JavaScript",
+                        "body": "Introduction to JavaScript programming.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Responsive Design",
+                        "body": "Techniques for responsive web design.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Back-End Development",
+                "description": "Exploring back-end development technologies and practices.",
+                "contents": [
+                    {
+                        "title": "Server-Side Programming",
+                        "body": "Introduction to server-side programming.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Databases",
+                        "body": "Understanding databases and their role in web development.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "API Development",
+                        "body": "Techniques for developing APIs.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            },
+            {
+                "title": "Full-Stack Development",
+                "description": "Combining front-end and back-end development skills.",
+                "contents": [
+                    {
+                        "title": "Full-Stack Frameworks",
+                        "body": "Introduction to full-stack development frameworks.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Deployment",
+                        "body": "Techniques for deploying web applications.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    },
+                    {
+                        "title": "Performance Optimization",
+                        "body": "Optimizing web application performance.",
+                        "video_url": "https://www.youtube.com/watch?v=xsg9BDiwiJE"
+                    }
+                ]
+            }
+        ]
+    }
+]

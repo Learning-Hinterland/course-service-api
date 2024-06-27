@@ -33,11 +33,11 @@ model CourseMaterial {
 }
 
 model CourseMaterialContent {
-  id                 Int    @id @default(autoincrement())
-  title              String
-  body            String?
-  video_url          String?
-  course_material_id Int
+  id          Int     @id @default(autoincrement())
+  title       String
+  body        String?
+  video_url   String?
+  material_id Int
 
   @@map("course_material_contents")
 }
@@ -48,4 +48,31 @@ model CourseEnrollment {
   user_id   Int
 
   @@map("course_enrollments")
+}
+
+model WatchedContent {
+  id         Int @id @default(autoincrement())
+  content_id Int
+  user_id    Int
+
+  @@map("watched_contents")
+}
+
+model Like {
+  id         Int       @id @default(autoincrement())
+  content_id Int
+  user_id    Int
+  date       DateTime? @default(now())
+
+  @@map("likes")
+}
+
+model Comment {
+  id         Int       @id @default(autoincrement())
+  content_id Int
+  user_id    Int
+  content    String
+  date       DateTime? @default(now())
+
+  @@map("comments")
 }

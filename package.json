@@ -11,14 +11,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "5.15.0",
+    "@prisma/client": "^5.16.0",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "morgan": "^1.10.0",
-    "prisma": "^5.15.0"
+    "morgan": "^1.10.0"
   },
   "prisma": {
-    "schema": "./src/database/schema.prisma"
+    "schema": "./src/database/schema.prisma",
+    "seed": "node src/database/seeders/index.js"
+  },
+  "devDependencies": {
+    "prisma": "^5.16.0"
   }
 }
