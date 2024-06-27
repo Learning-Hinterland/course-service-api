@@ -50,6 +50,7 @@ async function getCourses(req, res, next) {
         SELECT
             courses.*,
             course_enrollments.id AS enrollment_id,
+            
             (
                 SELECT COUNT(*)
                 FROM
@@ -70,6 +71,7 @@ async function getCourses(req, res, next) {
         FROM
             courses
             LEFT JOIN course_enrollments ON course_enrollments.course_id = courses.id AND course_enrollments.user_id = ${user_id}
+            LEFT JOIN course_material_assignments ON course_material_assignments.course_id = courses.id
         WHERE 1=1`;
 
         if (search) {
@@ -144,6 +146,20 @@ async function getCourseById(req, res, next) {
             courses.lecturer_id,
             course_enrollments.id AS enrollment_id,
 
+            course_material_assignments.id AS assignment_id,
+            course_material_assignments.content AS assignment_content,
+            course_material_assignments.deadline AS assignment_deadline,
+            (
+                SELECT COUNT(*)
+                FROM course_enrollments ce
+                WHERE ce.course_id = courses.id
+            ) AS assignment_student_count,
+            (
+                SELECT COUNT(*)
+                FROM course_material_submissions cms
+                WHERE cms.assignment_id = course_material_assignments.id
+            ) AS assignment_student_submission_count,
+
             (
                 SELECT COUNT(*)
                 FROM
@@ -191,6 +207,7 @@ async function getCourseById(req, res, next) {
             LEFT JOIN course_material_contents ON course_material_contents.material_id = course_materials.id
             LEFT JOIN course_enrollments ON course_enrollments.course_id = courses.id AND course_enrollments.user_id = ${user_id}
             LEFT JOIN likes ON likes.content_id = course_material_contents.id AND likes.user_id = ${user_id}
+            LEFT JOIN course_material_assignments ON course_material_assignments.material_id = course_materials.id
         WHERE
             courses.id = ${id};`);
         if (!course.length) {
@@ -264,13 +281,24 @@ async function getCourseById(req, res, next) {
                     title: item.material_title,
                     description: item.material_description,
                     course_id: item.material_course_id,
-                    contents: []
+                    contents: [],
+                    is_having_assignment: item.assignment_id ? true : false
                 };
                 if (item.enrollment_id) {
                     l.progress = {
                         total_contents: Number(item.material_total_contents),
                         watched_contents: Number(item.material_watched_contents),
                         percentage: parseInt(Number(item.material_watched_contents) / Number(item.material_total_contents) * 100)
+                    };
+                }
+                if (item.assignment_id) {
+                    l.assignment = {
+                        id: item.assignment_id,
+                        content: item.assignment_content,
+                        deadline: item.assignment_deadline,
+                        student_count: Number(item.assignment_student_count),
+                        student_submission_count: Number(item.assignment_student_submission_count),
+                        submission_progress: (Number(item.assignment_student_submission_count) / Number(item.assignment_student_count)) * 100
                     };
                 }
                 materialsMap.set(materialKey, l);
