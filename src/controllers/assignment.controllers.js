@@ -4,7 +4,8 @@ const prisma = new PrismaClient({ log: ['query'] });
 async function createAssignment(req, res, next) {
     try {
         let { material_id, content, deadline } = req.body;
-        let material = await prisma.material.findUnique({ where: { id: material_id } });
+        console.log("material_id", material_id);
+        let material = await prisma.courseMaterial.findFirst({ where: { id: material_id } });
         if (!material) {
             return res.status(400).json({
                 status: false,
@@ -14,7 +15,7 @@ async function createAssignment(req, res, next) {
             });
         }
 
-        let existingAssignment = await prisma.assignment.findUnique({ where: { material_id } });
+        let existingAssignment = await prisma.courseMaterialAssignment.findFirst({ where: { material_id } });
         if (existingAssignment) {
             return res.status(400).json({
                 status: false,
@@ -24,7 +25,18 @@ async function createAssignment(req, res, next) {
             });
         }
 
-        let assignment = await prisma.assignment.create({ data: { material_id, content, deadline } });
+        // validate deadline
+        let d = new Date(deadline);
+        if (isNaN(d)) {
+            return res.status(400).json({
+                status: false,
+                message: 'Invalid deadline',
+                error: null,
+                data: null
+            });
+        }
+
+        let assignment = await prisma.courseMaterialAssignment.create({ data: { material_id, content, deadline: d } });
         return res.status(201).json({
             status: true,
             message: 'Assignment created successfully',
