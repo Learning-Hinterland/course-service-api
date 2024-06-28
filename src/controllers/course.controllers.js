@@ -70,8 +70,9 @@ async function getCourses(req, res, next) {
             ) AS watched_contents
         FROM
             courses
+            LEFT JOIN course_materials ON course_materials.course_id = courses.id
             LEFT JOIN course_enrollments ON course_enrollments.course_id = courses.id AND course_enrollments.user_id = ${user_id}
-            LEFT JOIN course_material_assignments ON course_material_assignments.course_id = courses.id
+            LEFT JOIN course_material_assignments ON course_material_assignments.material_id = course_materials.id
         WHERE 1=1`;
 
         if (search) {
